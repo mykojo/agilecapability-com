@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with Agile Capability. Start the conversation about your transformation, request an ACT assessment, or book a call with one of our practitioners.">
+  <title>Contact - Agile Capability</title>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="icon" href="assets/images/favicon.ico">
+  <style>
+    /* Contact form styles */
+    .contact-form {
+      max-width: 560px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-2);
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-btn);
+      font-family: var(--font);
+      font-size: 15px;
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color var(--t), box-shadow var(--t);
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--text);
+      box-shadow: 0 0 0 3px rgba(26,26,26,.06);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 540px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+    .form-note {
+      font-size: 13px;
+      color: var(--text-3);
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="top-bar">
+  <div class="container">
+    <span>Agile Capability - Deliver Value Faster</span>
+    <span><a href="mailto:info@agilecapability.com">info@agilecapability.com</a></span>
+  </div>
+</div>
+
+<header id="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="/">
+      <img src="assets/images/logo.png" alt="Agile Capability" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="site-logo-text" style="display:none">Agile Capability</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="primary-nav" role="navigation" aria-label="Main">
+      <ul>
+        <li><a href="/#what-we-do">What we do</a></li>
+        <li class="has-dropdown">
+          <a href="/#services">Services</a>
+          <div class="dropdown" role="menu">
+            <a href="services/senior-advisory.html">Senior Advisory</a>
+            <a href="services/transformation-delivery.html">Transformation Delivery</a>
+            <a href="services/capability-building.html">Capability Building</a>
+            <a href="services/act-assessment.html">ACT Assessment</a>
+            <a href="services/mykojo.html">MyKojo Platform</a>
+          </div>
+        </li>
+        <li><a href="practitioners.html">Practitioners</a></li>
+        <li><a href="/#act">A.C.T</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="https://admin.agilecapabilitytool.com/login" class="btn btn-dark btn-sm">Login</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero section-sm subtle">
+  <div class="container">
+    <div class="eyebrow mb-12">Contact</div>
+    <h1 class="h1 mb-16">Start the conversation.</h1>
+    <p class="lead" style="max-width:560px">Tell us about your situation. We will respond within one business day with an honest view of whether and how we can help.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="split" style="align-items:flex-start">
+
+      <!-- FORM -->
+      <div class="contact-form">
+        <form action="FORMSPREE_ENDPOINT_TODO" method="POST">
+          <input type="hidden" name="_subject" value="Agile Capability enquiry">
+          <input type="hidden" name="_next" value="https://www.agilecapability.com/contact.html?sent=1">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First name</label>
+              <input type="text" id="first-name" name="first_name" required autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last name</label>
+              <input type="text" id="last-name" name="last_name" required autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Work email</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label for="organisation">Organisation</label>
+            <input type="text" id="organisation" name="organisation" autocomplete="organization">
+          </div>
+
+          <div class="form-group">
+            <label for="enquiry-type">What are you interested in?</label>
+            <select id="enquiry-type" name="enquiry_type">
+              <option value="">Select...</option>
+              <option value="act-assessment">ACT Assessment</option>
+              <option value="senior-advisory">Senior Advisory</option>
+              <option value="transformation-delivery">Transformation Delivery</option>
+              <option value="capability-building">Capability Building</option>
+              <option value="mykojo">MyKojo Platform</option>
+              <option value="general">General enquiry</option>
+              <option value="practitioner-network">Join the practitioner network</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tell us about your situation</label>
+            <textarea id="message" name="message" placeholder="What is your organisation trying to achieve? Where are you in your transformation? What is not working?"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center">Send message</button>
+          <p class="form-note">We will respond within one business day. No automated sales sequences.</p>
+        </form>
+      </div>
+
+      <!-- CONTACT INFO -->
+      <div>
+        <div class="card mb-24">
+          <div class="eyebrow mb-12">Direct contact</div>
+          <h3 class="h3 mb-16">Prefer email?</h3>
+          <p style="margin-bottom:8px"><a href="mailto:info@agilecapability.com" style="color:var(--text);font-weight:500">info@agilecapability.com</a></p>
+          <p style="color:var(--text-2);font-size:14px">We read every message. You will hear from a practitioner, not a sales rep.</p>
+        </div>
+
+        <div class="card mb-24">
+          <div class="eyebrow mb-12">Book a call</div>
+          <h3 class="h3 mb-16">30-minute discovery call</h3>
+          <p style="color:var(--text-2);font-size:14px;margin-bottom:16px">No agenda, no pitch. Tell us what you are working on. We will tell you what we think.</p>
+          <a href="https://calendly.com/agilecapability" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Open calendar</a>
+        </div>
+
+        <div class="card">
+          <div class="eyebrow mb-12">Working with us</div>
+          <h3 class="h3 mb-16">What to expect</h3>
+          <ul class="check-list">
+            <li>Response within one business day</li>
+            <li>Honest view of fit - we will say if we are not the right option</li>
+            <li>No drawn-out proposal process before we talk</li>
+            <li>ACT assessment before any engagement begins</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="site-logo-text">Agile Capability</span>
+        <p>Helping organisations deliver value faster through structured diagnostics, embedded practitioners, and measurable improvement.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="services/senior-advisory.html">Senior Advisory</a>
+        <a href="services/transformation-delivery.html">Transformation Delivery</a>
+        <a href="services/capability-building.html">Capability Building</a>
+        <a href="services/act-assessment.html">ACT Assessment</a>
+        <a href="services/mykojo.html">MyKojo Platform</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="practitioners.html">Our Practitioners</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://www.professionalagile.org" target="_blank" rel="noopener">Professional Agile</a>
+        <a href="https://admin.agilecapabilitytool.com/login" target="_blank" rel="noopener">Client Login</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@agilecapability.com">info@agilecapability.com</a>
+        <a href="contact.html">Book a call</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Agile Capability. All rights reserved.</span>
+      <span>Deliver Value Faster</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>
