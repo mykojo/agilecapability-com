@@ -262,7 +262,7 @@ h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; line-height: 1.1; }
 .btn-ghost {
   background: transparent;
   color: var(--accent-blue);
-  border: 1px solid var(--accent-blue);
+  border: 1.5px solid var(--accent-blue);
 }
 
 .btn-ghost:hover { background: var(--accent-blue); color: #FFFFFF; }
