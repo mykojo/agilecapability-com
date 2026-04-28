@@ -700,6 +700,16 @@ h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; line-height: 1.1; }
   z-index: 100;
 }
 
+/* Bridge the gap between trigger and panel so hover state is not lost */
+.dropdown::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
+
 .has-dropdown:hover .dropdown,
 .has-dropdown:focus-within .dropdown {
   opacity: 1;
