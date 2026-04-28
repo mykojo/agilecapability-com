@@ -186,6 +186,19 @@ h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; line-height: 1.1; }
   gap: 20px;
 }
 
+/* Generic responsive grids (replaces inline grid styles) */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
 /* Center hero content */
 .hero-center {
   text-align: center;
@@ -1025,6 +1038,7 @@ h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; line-height: 1.1; }
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 9998;
     background: var(--bg);
     flex-direction: column;
     align-items: flex-start;
@@ -1087,6 +1101,15 @@ h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; line-height: 1.1; }
   .card-grid   { grid-template-columns: 1fr; }
   .card-grid-2 { grid-template-columns: 1fr; }
   .card-grid-4 { grid-template-columns: 1fr 1fr; }
+  .grid-3      { grid-template-columns: 1fr; }
+  .grid-4      { grid-template-columns: 1fr 1fr; }
+
+  /* Eyebrow pill — allow wrapping on small screens */
+  .page-hero .eyebrow,
+  .hero .eyebrow {
+    white-space: normal;
+    max-width: 100%;
+  }
 
   /* Hero */
   .hero { padding: 72px 0 56px; }
