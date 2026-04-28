@@ -1,72 +1,43 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Get in touch with Agile Capability. Start the conversation about your transformation, request an ACT assessment, or book a call with one of our practitioners.">
+  <meta name="description" content="Three ways to begin. Book a 25-minute call, request an ACT assessment, or send a message. We respond inside one business day.">
   <title>Contact - Agile Capability</title>
   <link rel="stylesheet" href="assets/css/site.css">
   <link rel="icon" href="assets/images/favicon.ico">
   <style>
-    /* Contact form styles */
-    .contact-form {
-      max-width: 560px;
-    }
-    .form-group {
-      margin-bottom: 20px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-2);
-      margin-bottom: 6px;
-    }
+    .contact-form { max-width: 100%; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display:block; font-size:13px; font-weight:500; color:var(--ink-2); margin-bottom:6px; }
     .form-group input,
     .form-group textarea,
     .form-group select {
-      width: 100%;
-      padding: 11px 14px;
-      border: 1px solid var(--border);
-      border-radius: var(--r-btn);
-      font-family: var(--font);
-      font-size: 15px;
-      color: var(--text);
-      background: var(--bg);
-      transition: border-color var(--t), box-shadow var(--t);
+      width: 100%; padding: 11px 14px;
+      border: 1px solid var(--border); border-radius: var(--r-btn);
+      font-family: var(--font); font-size: 15px; color: var(--text);
+      background: var(--bg); transition: border-color var(--t), box-shadow var(--t);
       appearance: none;
     }
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus {
-      outline: none;
-      border-color: var(--text);
+      outline: none; border-color: var(--text);
       box-shadow: 0 0 0 3px rgba(26,26,26,.06);
     }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    @media (max-width: 540px) {
-      .form-row { grid-template-columns: 1fr; }
-    }
-    .form-note {
-      font-size: 13px;
-      color: var(--text-3);
-      margin-top: 12px;
-    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+    .form-note { font-size: 13px; color: var(--ink-2); margin-top: 12px; }
   </style>
 </head>
 <body>
 
 <div id="top-bar">
   <div class="container">
-    <span>Agile Capability - Deliver Value Faster</span>
+    <span>Agile Capability <span style="opacity:.45;margin:0 .3em">.</span> Senior Advisory and Transformation</span>
+    <span>Lisbon <span style="opacity:.45;margin:0 .3em">.</span> London <span style="opacity:.45;margin:0 .3em">.</span> Accra <span style="opacity:.45;margin:0 .3em">.</span> San Diego</span>
   </div>
 </div>
 
@@ -82,22 +53,13 @@
     <nav id="primary-nav" role="navigation" aria-label="Main">
       <ul>
         <li><a href="/#what-we-do">What we do</a></li>
-        <li class="has-dropdown">
-          <a href="/#services">Services</a>
-          <div class="dropdown" role="menu">
-            <a href="services/senior-advisory.html">Senior Advisory</a>
-            <a href="services/transformation-delivery.html">Transformation Delivery</a>
-            <a href="services/capability-building.html">Capability Building</a>
-            <a href="services/act-assessment.html">ACT Assessment</a>
-            <a href="services/mykojo.html">MyKojo Platform</a>
-          </div>
-        </li>
+        <li><a href="services/act-assessment.html">Begin with ACT</a></li>
+        <li><a href="services/mykojo.html">MyKojo</a></li>
         <li><a href="practitioners.html">Practitioners</a></li>
-        <li><a href="/#act">A.C.T</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="https://admin.agilecapabilitytool.com/login" class="btn btn-dark btn-sm">Login</a>
+        <a href="contact.html" class="btn btn-dark btn-sm">Book a 25-min call</a>
       </div>
     </nav>
   </div>
@@ -105,19 +67,46 @@
 
 <section class="page-hero section-sm subtle">
   <div class="container">
-    <div class="eyebrow mb-12">Contact</div>
-    <h1 class="h1 mb-16">Start the conversation.</h1>
-    <p class="lead" style="max-width:560px">Tell us about your situation. We will respond within one business day with an honest view of whether and how we can help.</p>
+    <div class="eyebrow mb-12">THREE WAYS TO BEGIN</div>
+    <h1 class="h1 mb-16">Contact.</h1>
+    <p class="lead" style="max-width:560px">Pick the route that matches where you are. We will respond inside one business day.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="split" style="align-items:flex-start">
+    <div class="card-grid">
+      <div class="card">
+        <div class="eyebrow mb-12">Route 01</div>
+        <h3 class="h3 mb-12">Book a 25-minute call</h3>
+        <p style="margin-bottom:24px">A short conversation with a senior practitioner. No deck, no agenda, no obligation. Useful when you are still scoping the question.</p>
+        <a href="#form" class="btn btn-dark btn-sm">Book a call</a>
+      </div>
+      <div class="card">
+        <div class="eyebrow mb-12">Route 02</div>
+        <h3 class="h3 mb-12">Request an ACT assessment</h3>
+        <p style="margin-bottom:24px">Most engagements start here. Two to three weeks, capability map, recommendation you can act on inside a quarter.</p>
+        <a href="services/act-assessment.html" class="btn btn-dark btn-sm">Request an assessment</a>
+      </div>
+      <div class="card">
+        <div class="eyebrow mb-12">Route 03</div>
+        <h3 class="h3 mb-12">Send a message</h3>
+        <p style="margin-bottom:24px">For everything else. RFPs, partnership questions, press, careers, and anything that does not fit the first two routes.</p>
+        <a href="#form" class="btn btn-dark btn-sm">Open contact form</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <!-- FORM -->
-      <div class="contact-form">
-        <form action="https://formspree.io/agilecapability@gmail.com" method="POST">
+<hr class="divider">
+
+<section class="section subtle" id="form">
+  <div class="container">
+    <div class="split" style="align-items:flex-start;gap:64px">
+      <div style="flex:1 1 0">
+        <div class="eyebrow mb-16">Send a message</div>
+        <h2 class="h2 mb-32">We read every one.</h2>
+        <form action="https://formspree.io/agilecapability@gmail.com" method="POST" class="contact-form">
           <input type="hidden" name="_subject" value="Agile Capability enquiry">
           <input type="hidden" name="_next" value="https://www.agilecapability.com/contact.html?sent=1">
 
@@ -146,46 +135,43 @@
             <label for="enquiry-type">What are you interested in?</label>
             <select id="enquiry-type" name="enquiry_type">
               <option value="">Select...</option>
+              <option value="book-a-call">Book a 25-minute call</option>
               <option value="act-assessment">ACT Assessment</option>
               <option value="senior-advisory">Senior Advisory</option>
               <option value="transformation-delivery">Transformation Delivery</option>
               <option value="capability-building">Capability Building</option>
-              <option value="mykojo">MyKojo Platform</option>
+              <option value="mykojo">MyKojo</option>
               <option value="general">General enquiry</option>
-              <option value="practitioner-network">Join the practitioner network</option>
             </select>
           </div>
 
           <div class="form-group">
             <label for="message">Tell us about your situation</label>
-            <textarea id="message" name="message" placeholder="What is your organisation trying to achieve? Where are you in your transformation? What is not working?"></textarea>
+            <textarea id="message" name="message" placeholder="What is your organisation trying to achieve? Where are you in your transformation?"></textarea>
           </div>
 
           <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center">Send message</button>
           <p class="form-note">We will respond within one business day. No automated sales sequences.</p>
         </form>
       </div>
-
-      <!-- CONTACT INFO -->
-      <div>
-        <div class="card mb-24">
-          <div class="eyebrow mb-12">Direct contact</div>
-          <h3 class="h3 mb-16">Prefer email?</h3>
-          <p style="color:var(--text-2);font-size:14px">We read every message. You will hear from a practitioner, not a sales rep.</p>
-        </div>
-
-        <div class="card">
-          <div class="eyebrow mb-12">Working with us</div>
-          <h3 class="h3 mb-16">What to expect</h3>
-          <ul class="check-list">
-            <li>Response within one business day</li>
-            <li>Honest view of fit - we will say if we are not the right option</li>
-            <li>No drawn-out proposal process before we talk</li>
-            <li>ACT assessment before any engagement begins</li>
-          </ul>
+      <div style="flex:0 0 280px">
+        <div class="eyebrow mb-16">Offices</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div>
+            <p style="font-size:14px;font-weight:500;margin-bottom:2px">Lisbon, Portugal</p>
+          </div>
+          <div>
+            <p style="font-size:14px;font-weight:500;margin-bottom:2px">London, United Kingdom</p>
+          </div>
+          <div>
+            <p style="font-size:14px;font-weight:500;margin-bottom:2px">Accra, Ghana</p>
+            <p style="font-size:13px;color:var(--ink-2)">Agile Capability Limited</p>
+          </div>
+          <div>
+            <p style="font-size:14px;font-weight:500;margin-bottom:2px">San Diego, United States</p>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -195,7 +181,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="site-logo-text">Agile Capability</span>
-        <p>Helping organisations deliver value faster through structured diagnostics, embedded practitioners, and measurable improvement.</p>
+        <p>Senior advisory and transformation delivery. Working with exceptionally large organisations on transformations that have to land.</p>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
@@ -203,23 +189,25 @@
         <a href="services/transformation-delivery.html">Transformation Delivery</a>
         <a href="services/capability-building.html">Capability Building</a>
         <a href="services/act-assessment.html">ACT Assessment</a>
-        <a href="services/mykojo.html">MyKojo Platform</a>
+        <a href="services/mykojo.html">MyKojo</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="practitioners.html">Our Practitioners</a>
+        <a href="practitioners.html">Practitioners</a>
         <a href="contact.html">Contact</a>
         <a href="https://www.professionalagile.org" target="_blank" rel="noopener">Professional Agile</a>
         <a href="https://admin.agilecapabilitytool.com/login" target="_blank" rel="noopener">Client Login</a>
       </div>
       <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="contact.html">Book a call</a>
+        <h4>Offices</h4>
+        <span style="font-size:14px;color:rgba(255,255,255,.55);display:block;padding:4px 0">Lisbon, Portugal</span>
+        <span style="font-size:14px;color:rgba(255,255,255,.55);display:block;padding:4px 0">London, United Kingdom</span>
+        <span style="font-size:14px;color:rgba(255,255,255,.55);display:block;padding:4px 0">Accra, Ghana</span>
+        <span style="font-size:14px;color:rgba(255,255,255,.55);display:block;padding:4px 0">San Diego, United States</span>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2025 Agile Capability. All rights reserved.</span>
-      <span>Deliver Value Faster</span>
+      <span>&copy; 2026 Agile Capability. All rights reserved.</span>
     </div>
   </div>
 </footer>
@@ -227,4 +215,3 @@
 <script src="assets/js/site.js"></script>
 </body>
 </html>
-
