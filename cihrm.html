@@ -259,7 +259,7 @@
    Options: Formspree form URL, or a POST endpoint that stores the lead and
    emails the Getting Started pack. */
 (function(){
-  var ENDPOINT = ''; // e.g. 'https://formspree.io/f/xxxx…'
+  var ENDPOINT = 'https://vbfactory.co/api/leads';
   var form = document.getElementById('lead-form');
   var note = document.getElementById('form-note');
   function show(msg, ok){ note.hidden=false; note.textContent=msg; note.className='form-note '+(ok?'ok':'err'); }
@@ -275,8 +275,13 @@
       form.querySelector('button[type=submit]').disabled = true;
       return;
     }
-    var data = new FormData(form);
-    fetch(ENDPOINT, { method:'POST', body:data, headers:{ 'Accept':'application/json' } })
+    var wants = Array.prototype.slice.call(form.querySelectorAll('input[name=wants]:checked')).map(function(c){ return c.value; });
+    var payload = {
+      name: name, email: email, organisation: org,
+      role: form.role.value.trim(), department: form.department.value.trim(),
+      team_size: form.team_size.value, wants: wants, source: form.source.value || 'CIHRM 2026'
+    };
+    fetch(ENDPOINT, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) })
       .then(function(r){ if(!r.ok) throw new Error('bad status'); return r; })
       .then(function(){ show('Thank you, ' + name.split(' ')[0] + '. Your pack is on its way and we will be in touch.', true); form.reset(); form.querySelector('button[type=submit]').disabled=true; })
       .catch(function(err){ console.error('lead submit failed', err); show('Something went wrong. Please email us at hello@agilecapability.com and we will sort it.', false); });
