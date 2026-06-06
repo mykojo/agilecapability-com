@@ -6,5 +6,8 @@ services:
     pullRequestPreviewsEnabled: false
     routes:
       - type: rewrite
+        source: /cihrm
+        destination: /cihrm.html
+      - type: rewrite
         source: /*
         destination: /index.html

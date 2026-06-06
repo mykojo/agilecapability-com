@@ -1037,7 +1037,11 @@ h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; line-height: 1.1; }
     top: var(--header-h);
     left: 0;
     right: 0;
-    bottom: 0;
+    /* height by viewport units, not bottom:0. #site-header's backdrop-filter
+       makes it the containing block for this fixed element, so bottom:0 would
+       resolve against the 60px header and collapse the menu. */
+    height: calc(100vh - var(--header-h));
+    height: calc(100dvh - var(--header-h));
     z-index: 9998;
     background: var(--bg);
     flex-direction: column;
