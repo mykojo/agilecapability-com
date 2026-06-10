@@ -35,20 +35,43 @@
     <h2 style="font-size:28px;font-weight:900;letter-spacing:-.02em;color:#0F2336;margin:0 0 10px">Access ACT HR</h2>
     <p style="font-size:14px;color:#374151;line-height:1.6;margin:0 0 24px">A safe place to rehearse the hard HR conversations before you have them for real. Enter your details and we will send your personal 7-day access link.</p>
     <div style="background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:28px">
-      <div style="margin-bottom:16px">
-        <label style="display:block;font-size:13px;font-weight:600;color:#0F2336;margin-bottom:6px" for="achr-name">Full name</label>
-        <input id="achr-name" type="text" autocomplete="name" placeholder="Your name"
-          style="width:100%;box-sizing:border-box;font-family:inherit;font-size:15px;color:#0F2336;padding:11px 13px;border:1px solid #D1D5DB;border-radius:8px;outline:none">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+        <div>
+          <label style="display:block;font-size:13px;font-weight:600;color:#0F2336;margin-bottom:6px" for="achr-first">First name</label>
+          <input id="achr-first" type="text" autocomplete="given-name" placeholder="First"
+            style="width:100%;box-sizing:border-box;font-family:inherit;font-size:15px;color:#0F2336;padding:11px 13px;border:1px solid #D1D5DB;border-radius:8px;outline:none">
+        </div>
+        <div>
+          <label style="display:block;font-size:13px;font-weight:600;color:#0F2336;margin-bottom:6px" for="achr-last">Last name</label>
+          <input id="achr-last" type="text" autocomplete="family-name" placeholder="Last"
+            style="width:100%;box-sizing:border-box;font-family:inherit;font-size:15px;color:#0F2336;padding:11px 13px;border:1px solid #D1D5DB;border-radius:8px;outline:none">
+        </div>
       </div>
       <div style="margin-bottom:16px">
         <label style="display:block;font-size:13px;font-weight:600;color:#0F2336;margin-bottom:6px" for="achr-email">Work email</label>
         <input id="achr-email" type="email" autocomplete="email" placeholder="you@organisation.com"
           style="width:100%;box-sizing:border-box;font-family:inherit;font-size:15px;color:#0F2336;padding:11px 13px;border:1px solid #D1D5DB;border-radius:8px;outline:none">
       </div>
-      <div style="margin-bottom:20px">
+      <div style="margin-bottom:16px">
+        <label style="display:block;font-size:13px;font-weight:600;color:#0F2336;margin-bottom:6px" for="achr-title">Job title</label>
+        <input id="achr-title" type="text" autocomplete="organization-title" placeholder="Your role"
+          style="width:100%;box-sizing:border-box;font-family:inherit;font-size:15px;color:#0F2336;padding:11px 13px;border:1px solid #D1D5DB;border-radius:8px;outline:none">
+      </div>
+      <div style="margin-bottom:16px">
         <label style="display:block;font-size:13px;font-weight:600;color:#0F2336;margin-bottom:6px" for="achr-org">Organisation</label>
         <input id="achr-org" type="text" autocomplete="organization" placeholder="Your organisation"
           style="width:100%;box-sizing:border-box;font-family:inherit;font-size:15px;color:#0F2336;padding:11px 13px;border:1px solid #D1D5DB;border-radius:8px;outline:none">
+      </div>
+      <div style="margin-bottom:20px">
+        <label style="display:block;font-size:13px;font-weight:600;color:#0F2336;margin-bottom:6px" for="achr-sector">Sector</label>
+        <select id="achr-sector"
+          style="width:100%;box-sizing:border-box;font-family:inherit;font-size:15px;color:#0F2336;padding:11px 13px;border:1px solid #D1D5DB;border-radius:8px;outline:none;background:#fff;-webkit-appearance:none;appearance:none">
+          <option value="">Select your sector</option>
+          <option value="public">Public sector</option>
+          <option value="private">Private sector</option>
+          <option value="ngo">NGO / Not-for-profit</option>
+          <option value="other">Other</option>
+        </select>
       </div>
       <div id="achr-err" style="display:none;font-size:13px;color:#C0392B;margin-bottom:12px;padding:10px 12px;background:#FDECEC;border-radius:7px;border:1px solid #F5C6C6"></div>
       <button id="achr-btn" onclick="submitAchrForm()"
@@ -330,21 +353,24 @@
   }
 
   function submitAchrForm(){
-    var name  = (document.getElementById('achr-name').value  || '').trim();
-    var email = (document.getElementById('achr-email').value || '').trim();
-    var org   = (document.getElementById('achr-org').value   || '').trim();
+    var first = (document.getElementById('achr-first').value  || '').trim();
+    var last  = (document.getElementById('achr-last').value   || '').trim();
+    var email = (document.getElementById('achr-email').value  || '').trim();
+    var title = (document.getElementById('achr-title').value  || '').trim();
+    var org   = (document.getElementById('achr-org').value    || '').trim();
+    var sector= (document.getElementById('achr-sector').value || '').trim();
     var err   = document.getElementById('achr-err');
     var btn   = document.getElementById('achr-btn');
     var ok    = document.getElementById('achr-ok');
     err.style.display='none'; ok.style.display='none';
-    if(!name){ err.textContent='Please enter your name.'; err.style.display='block'; return; }
-    if(!org){  err.textContent='Please enter your organisation.'; err.style.display='block'; return; }
+    if(!first){ err.textContent='Please enter your first name.'; err.style.display='block'; return; }
+    if(!last){  err.textContent='Please enter your last name.'; err.style.display='block'; return; }
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ err.textContent='Please enter a valid work email.'; err.style.display='block'; return; }
     btn.disabled=true; btn.textContent='Sending...';
     fetch(REGISTER_ENDPOINT, {
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ code: _enteredCode, name: name, email: email, organisation: org })
+      body: JSON.stringify({ code: _enteredCode, first_name: first, last_name: last, email: email, job_title: title||undefined, organisation: org||undefined, sector: sector||undefined })
     })
     .then(function(r){ return r.json().then(function(d){ return { ok: r.ok, d: d }; }); })
     .then(function(res){
@@ -356,9 +382,11 @@
       ok.innerHTML='Your access link is on its way to <strong>'+email+'</strong>. Check your inbox and tap the link to open ACT HR.';
       ok.style.display='block';
       btn.style.display='none';
-      document.getElementById('achr-name').disabled=true;
+      document.getElementById('achr-first').disabled=true;
+      document.getElementById('achr-last').disabled=true;
       document.getElementById('achr-email').disabled=true;
       document.getElementById('achr-org').disabled=true;
+      document.getElementById('achr-sector').disabled=true;
     })
     .catch(function(e){
       btn.disabled=false; btn.textContent='Send my access link →';
