@@ -10,6 +10,57 @@
 </head>
 <body>
 
+<!-- CODE GATE: shown on arrival, hides the page until the conference code is entered -->
+<div id="cihrm-gate" style="position:fixed;inset:0;z-index:9999;background:#0F2336;display:flex;align-items:center;justify-content:center;padding:24px">
+  <div style="background:#fff;border-radius:16px;padding:36px 32px;max-width:420px;width:100%;text-align:center">
+    <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#6B7280;margin-bottom:16px">Agile Capability</div>
+    <div style="font-size:28px;font-weight:900;letter-spacing:-.02em;color:#0F2336;margin-bottom:8px">ACT HR</div>
+    <div style="font-size:14px;color:#374151;line-height:1.55;margin-bottom:28px">Enter the conference code from your delegate pack to continue.</div>
+    <input id="gate-code" type="text" autocomplete="off" spellcheck="false"
+      placeholder="Conference code"
+      style="width:100%;box-sizing:border-box;font-family:inherit;font-size:16px;font-weight:700;text-align:center;text-transform:uppercase;letter-spacing:.06em;padding:14px;border:2px solid #E5E7EB;border-radius:10px;margin-bottom:10px;outline:none"
+      onkeydown="if(event.key==='Enter')submitGateCode()">
+    <div id="gate-err" style="display:none;font-size:13px;color:#C0392B;margin-bottom:10px"></div>
+    <button onclick="submitGateCode()"
+      style="width:100%;background:#1B6FB3;color:#fff;border:none;border-radius:10px;padding:14px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer">
+      Continue &rarr;
+    </button>
+  </div>
+</div>
+
+<!-- ACT HR REGISTER: revealed after correct code, sits above the existing hero -->
+<div id="achr-register" style="display:none;background:#EEF2F6;padding:60px 16px">
+  <div style="max-width:520px;margin:0 auto">
+    <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#1B6FB3;margin-bottom:8px">CIHRM 2026</div>
+    <h2 style="font-size:28px;font-weight:900;letter-spacing:-.02em;color:#0F2336;margin:0 0 10px">Access ACT HR</h2>
+    <p style="font-size:14px;color:#374151;line-height:1.6;margin:0 0 24px">A safe place to rehearse the hard HR conversations before you have them for real. Enter your details and we will send your personal 7-day access link.</p>
+    <div style="background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:28px">
+      <div style="margin-bottom:16px">
+        <label style="display:block;font-size:13px;font-weight:600;color:#0F2336;margin-bottom:6px" for="achr-name">Full name</label>
+        <input id="achr-name" type="text" autocomplete="name" placeholder="Your name"
+          style="width:100%;box-sizing:border-box;font-family:inherit;font-size:15px;color:#0F2336;padding:11px 13px;border:1px solid #D1D5DB;border-radius:8px;outline:none">
+      </div>
+      <div style="margin-bottom:16px">
+        <label style="display:block;font-size:13px;font-weight:600;color:#0F2336;margin-bottom:6px" for="achr-email">Work email</label>
+        <input id="achr-email" type="email" autocomplete="email" placeholder="you@organisation.com"
+          style="width:100%;box-sizing:border-box;font-family:inherit;font-size:15px;color:#0F2336;padding:11px 13px;border:1px solid #D1D5DB;border-radius:8px;outline:none">
+      </div>
+      <div style="margin-bottom:20px">
+        <label style="display:block;font-size:13px;font-weight:600;color:#0F2336;margin-bottom:6px" for="achr-org">Organisation</label>
+        <input id="achr-org" type="text" autocomplete="organization" placeholder="Your organisation"
+          style="width:100%;box-sizing:border-box;font-family:inherit;font-size:15px;color:#0F2336;padding:11px 13px;border:1px solid #D1D5DB;border-radius:8px;outline:none">
+      </div>
+      <div id="achr-err" style="display:none;font-size:13px;color:#C0392B;margin-bottom:12px;padding:10px 12px;background:#FDECEC;border-radius:7px;border:1px solid #F5C6C6"></div>
+      <button id="achr-btn" onclick="submitAchrForm()"
+        style="width:100%;background:#1B6FB3;color:#fff;border:none;border-radius:10px;padding:14px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer">
+        Send my access link &rarr;
+      </button>
+      <div id="achr-ok" style="display:none;margin-top:16px;padding:14px;background:#EAF3FB;border:1px solid #BBD7EE;border-radius:9px;font-size:13px;color:#1a5f99;line-height:1.5"></div>
+      <p style="font-size:12px;color:#9CA3AF;margin:14px 0 0;text-align:center">Your details are used only to send the access link. We do not share them.</p>
+    </div>
+  </div>
+</div>
+
 <!-- TOP BAR -->
 <div id="top-bar">
   <div class="container">
@@ -252,6 +303,74 @@
 </style>
 
 <script src="assets/js/site.js"></script>
+<script>
+/* Code gate and ACT HR registration. Separate from the assessment lead-form below. */
+(function(){
+  var REGISTER_ENDPOINT = 'https://vbfactory.co/api/agilecihrm/register';
+  var GATE_CODE = 'AGILEHR2026';
+  var _enteredCode = '';
+
+  function submitGateCode(){
+    var inp = document.getElementById('gate-code');
+    var err = document.getElementById('gate-err');
+    var code = (inp.value || '').trim().toUpperCase();
+    if(!code){ err.textContent='Please enter the conference code.'; err.style.display='block'; return; }
+    if(code !== GATE_CODE){ err.textContent='That code was not recognised. Please check your delegate pack.'; err.style.display='block'; inp.select(); return; }
+    _enteredCode = code;
+    err.style.display='none';
+    // Lift the gate
+    var gate = document.getElementById('cihrm-gate');
+    gate.style.transition = 'opacity .3s';
+    gate.style.opacity = '0';
+    setTimeout(function(){ gate.style.display='none'; }, 300);
+    // Reveal and scroll to the register section
+    var reg = document.getElementById('achr-register');
+    reg.style.display = 'block';
+    setTimeout(function(){ reg.scrollIntoView({ behavior:'smooth', block:'start' }); }, 50);
+  }
+
+  function submitAchrForm(){
+    var name  = (document.getElementById('achr-name').value  || '').trim();
+    var email = (document.getElementById('achr-email').value || '').trim();
+    var org   = (document.getElementById('achr-org').value   || '').trim();
+    var err   = document.getElementById('achr-err');
+    var btn   = document.getElementById('achr-btn');
+    var ok    = document.getElementById('achr-ok');
+    err.style.display='none'; ok.style.display='none';
+    if(!name){ err.textContent='Please enter your name.'; err.style.display='block'; return; }
+    if(!org){  err.textContent='Please enter your organisation.'; err.style.display='block'; return; }
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ err.textContent='Please enter a valid work email.'; err.style.display='block'; return; }
+    btn.disabled=true; btn.textContent='Sending...';
+    fetch(REGISTER_ENDPOINT, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ code: _enteredCode, name: name, email: email, organisation: org })
+    })
+    .then(function(r){ return r.json().then(function(d){ return { ok: r.ok, d: d }; }); })
+    .then(function(res){
+      btn.disabled=false; btn.textContent='Send my access link →';
+      if(!res.ok || !res.d.ok){
+        err.textContent=(res.d&&res.d.error)||'Something went wrong. Please try again.';
+        err.style.display='block'; return;
+      }
+      ok.innerHTML='Your access link is on its way to <strong>'+email+'</strong>. Check your inbox and tap the link to open ACT HR.';
+      ok.style.display='block';
+      btn.style.display='none';
+      document.getElementById('achr-name').disabled=true;
+      document.getElementById('achr-email').disabled=true;
+      document.getElementById('achr-org').disabled=true;
+    })
+    .catch(function(e){
+      btn.disabled=false; btn.textContent='Send my access link →';
+      err.textContent='Could not connect. Please try again or email hello@agilecapability.com.';
+      err.style.display='block';
+    });
+  }
+
+  window.submitGateCode   = submitGateCode;
+  window.submitAchrForm   = submitAchrForm;
+})();
+</script>
 <script>
 /* Lead capture.
    TODO(wire): set ENDPOINT to the real capture endpoint before launch.
